@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
-    "test": ""
+    "test": "mocha ./tests/**/*$NAME*.test.js --exit"
   },
   "keywords": [],
   "author": "Leonardo Mallmann",
