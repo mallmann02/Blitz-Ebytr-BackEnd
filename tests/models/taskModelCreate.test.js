@@ -6,7 +6,7 @@ const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoConnection = require('../../models/connection');
 const TaskModel = require('../../models/TaskModel');
 
-describe('Insere um novo filme no BD', () => {
+describe('Insere uma nova tarefa no BD', () => {
    let connectionMock;
    const payloadTask = {
       title: 'Give the dog some food',
