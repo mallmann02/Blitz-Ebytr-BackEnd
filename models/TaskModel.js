@@ -31,7 +31,15 @@ const edit = async ({ title, status, createdAt, id }) => {
   };
 };
 
+const remove = async (id) => {
+  const tasksCollection = await mongoConnection.getConnection()
+    .then((db) => db.collection('tasks'));
+
+  await tasksCollection.deleteOne({ _id: id });
+};
+
 module.exports = {
   create,
   edit,
+  remove,
 };
