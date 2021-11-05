@@ -1,7 +1,7 @@
 const mongoConnection = require('./connection');
 const { ObjectId } = require('mongodb');
 
-const findAll = () => {
+const findAll = async () => {
   const tasksCollection = await mongoConnection.getConnection()
     .then((db) => db.collection('tasks'));
 
