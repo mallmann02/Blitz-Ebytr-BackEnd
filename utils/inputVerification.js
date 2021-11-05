@@ -5,9 +5,9 @@ const titleVerification = (title) => {
 
 const statusVerification = (status) => {
   if (
-    status !== 'em andamento'
-  || status !== 'pendente'
-  || status !== 'pronto') {
+    status != 'em andamento'
+  && status != 'pendente'
+  && status != 'pronto') {
     return false;
   }
   return true;
