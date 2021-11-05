@@ -1,7 +1,7 @@
 const mongoConnection = require('./connection');
 const { ObjectId } = require('mongodb');
 
-const findAll = () => {
+const findAll = async () => {
   const tasksCollection = await mongoConnection.getConnection()
     .then((db) => db.collection('tasks'));
 
@@ -25,18 +25,16 @@ const create = async ({ title, status, createdAt }) => {
   };
 };
 
-const edit = async ({ title, status, createdAt, id }) => {
+const edit = async ({ status, id }) => {
   const tasksCollection = await mongoConnection.getConnection()
     .then((db) => db.collection('tasks'));
 
   await tasksCollection
-    .updateOne({ _id: id }, { $set: { status } });
+    .updateOne({ _id: ObjectId(id) }, { $set: { status } });
 
   return {
     id,
-    title,
     status,
-    createdAt,
   };
 };
 
@@ -44,7 +42,7 @@ const remove = async (id) => {
   const tasksCollection = await mongoConnection.getConnection()
     .then((db) => db.collection('tasks'));
 
-  await tasksCollection.deleteOne({ _id: id });
+  await tasksCollection.deleteOne({ _id: ObjectId(id) });
 };
 
 module.exports = {
